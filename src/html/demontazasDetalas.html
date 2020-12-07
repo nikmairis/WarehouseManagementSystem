@@ -1,0 +1,237 @@
+<html>
+    <head>
+        <title>Pasūtījuma detaļas</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+        <link rel="stylesheet" type="text/css" href="../vendor/bootstrap/css/bootstrap.min.css">
+        <script src="https://www.gstatic.com/firebasejs/7.22.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.22.1/firebase-database.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.22.1/firebase-auth.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    </head>
+    <body>
+    <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+        <!-- Brand -->
+        <a class="navbar-brand" href="landingPage.html">
+            <img src="../images/icons/logo.png" alt="Logo" style="width:100px;">
+        </a>
+        <!-- Links -->
+        <ul class="navbar-nav nav-padding">
+            <li class="nav-item">
+                <a class="nav-link" href="mainitMenesi.html">Mainīt mēnesi</a>
+            </li>
+        </ul>
+    </nav>
+
+    <!----------------------------- MODAL ------------------------------->
+    <div class="modal fade" id="ErrorModal" tabindex="-1" role="dialog" aria-labelledby="exampleModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Uzmanību</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div id="BodyText" class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!----------------------------- MODAL ------------------------------->
+
+    <div id="mainContainer" class="createOrderContainer" style="width: 600px; margin: auto;">
+        <div class="form-group">
+            <label>Pasūtītājs*</label>
+            <input id="pasutitajs" type="text" name="pasutitajs" class="form-control">
+        </div>
+        <div class="form-group">
+            <label>Kontaktpersona</label>
+            <input id="kontaktpersona" type="text" name="kontaktpersona" class="form-control">
+            <small class="form-text text-muted">Persona, kas pieņems preci</small>
+        </div>
+        <div class="form-group">
+            <label>Adrese</label>
+            <input id="adrese" type="text" name="adrese" class="form-control">
+        </div>
+        <div class="form-group">
+            <label>Telefona nr.</label>
+            <input id="telefons" type="text" name="telefons" class="form-control">
+        </div>
+        <div class="form-group">
+            <label>Epasts</label>
+            <input id="epasts" type="text" name="epasts" class="form-control">
+        </div>
+
+
+
+        <hr style="height: 1px; background-color:#000; border: none;">
+
+
+
+        <div class="row">
+            <div class="col">
+                <label>Mēnesis*</label>
+                <select class="form-control" id="menesis">
+                    <option value="Jan">Janvāris</option>
+                    <option value="Feb">Februāris</option>
+                    <option value="Mar">Marts</option>
+                    <option value="Apr">Aprīlis</option>
+                    <option value="May">Maijs</option>
+                    <option value="Jun">Jūnijs</option>
+                    <option value="Jul">Jūlijs</option>
+                    <option value="Aug">Augusts</option>
+                    <option value="Sept">Septembris</option>
+                    <option value="Oct">Oktobris</option>
+                    <option value="Nov">Novembris</option>
+                    <option value="Dec">Decembris</option>
+                </select>
+                <small class="form-text text-muted">Mēnesis šīs sezonas ietvaros. </small>
+            </div>
+            <div class="col">
+                <label>Datums*</label>
+                <input id="datums" type="number" name="datums" min="1" max="31" class="form-control">
+                <small class="form-text text-muted">1-31</small>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col">
+                    <label>Laiks*</label>
+                    <input id="laiks" type="time" step="1800" class="form-control">
+                    <small class="form-text text-muted">Laika solis - 30 min. Neizmantot laikus, kas nav veselas vai pus stundas!  </small>
+                </div>
+                <div class="col">
+                    <label>Plānotais izpildes laiks</label>
+                    <select class="form-control" id="izpildesLaiks">
+                        <option value="00:30">00:30</option>
+                        <option value="01:00">01:00</option>
+                        <option value="01:30">01:30</option>
+                        <option value="02:00">02:00</option>
+                        <option value="02:30">02:30</option>
+                        <option value="03:00">03:00</option>
+                        <option value="03:30">03:30</option>
+                        <option value="04:00">04:00</option>
+                        <option value="04:30">04:30</option>
+                        <option value="05:00">05:00</option>
+                        <option value="05:30">05:30</option>
+                        <option value="06:00">06:00</option>
+                        <option value="06:30">06:30</option>
+                        <option value="07:00">07:00</option>
+                        <option value="07:30">07:30</option>
+                        <option value="08:00">08:00</option>
+                        <option value="08:30">08:30</option>
+                        <option value="09:00">09:00</option>
+                        <option value="09:30">09:30</option>
+                        <option value="10:00">10:00</option>
+                        <option value="10:30">10:30</option>
+                        <option value="11:00">11:00</option>
+                        <option value="11:30">11:30</option>
+                        <option value="12:00">12:00</option>
+                        <option value="12:30">12:30</option>
+                        <option value="13:00">13:00</option>
+                        <option value="13:30">13:30</option>
+                        <option value="14:00">14:00</option>
+                    </select>
+                    <small class="form-text text-muted">Nosaka cik kalendāra šūnas aizpildīt</small>
+                </div>
+            </div>
+        </div>
+
+
+
+        <hr style="height: 1px; background-color:#000; border: none;">
+
+
+
+        <div class="form-group">
+            <label>Norēķinu veids</label>
+            <select id="norekinuVeids" class="form-control">
+                <option value="parskaitijums">Pārskaitījums</option>
+                <option value="skaidrs">Skaidra nauda</option>
+                <option value="barteris">Barteris</option>
+                <option value="davanuKarte">Dāvanu karte</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Pasūtījuma summa</label>
+            <input id="pasutijumaSumma" type="text" name="pasutijumaSumma" class="form-control">
+            <small class="form-text text-muted">Pasūtīto preču kopējā cena</small>
+        </div>
+        <div class="form-group">
+            <label>Ceļa Izdevumi</label>
+            <input id="celaIzdevumi" type="text" name="celaIzdevumi" class="form-control">
+            <small class="form-text text-muted">Piegādes izmaksas</small>
+        </div>
+        <div class="form-group">
+            <label>Atlaide</label>
+            <input id="atlaide" type="text" name="atlaide" class="form-control">
+        </div>
+        <div class="form-group">
+            <label>Summa apmaksai</label>
+            <input id="summaApmaksai" type="text" name="summaApmaksai" class="form-control">
+            <small class="form-text text-muted">Summa, kas jāmaksā pasūtītājam</small>
+        </div>
+        <div class="form-group">
+            <label>Apmaksas Statuss</label>
+            <select id="apmaksasStatuss" class="form-control">
+                <option value=false>Neapmaksāts</option>
+                <option value=true>Apmaksāts</option>
+            </select>
+        </div>
+
+
+
+        <hr style="height: 1px; background-color:#000; border: none;">
+
+
+
+        <div class="form-group">
+            <label>Buss*</label>
+            <select class="form-control" id="buss">
+                <option value="1">Buss 1</option>
+                <option value="2">Buss 2</option>
+                <option value="3">Buss 3</option>
+            </select>
+            <small class="form-text text-muted">Buss, kurš vedīs pasūtījumu</small>
+        </div>
+        <div class="form-group">
+            <label>Informācija Vadītājam</label>
+            <input id="info" type="text" name="info" class="form-control">
+            <small class="form-text text-muted">Informācija, kas jāzina vadītājam, veicot piegādi</small>
+        </div>
+
+
+        <div class="form-group">
+            <button id="editOrder" class="btn btn-primary" style="width: 100%;" disabled>Labot</button>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="form-group text-center">
+            <button id="deleteOrder" class="btn btn-outline-danger" style="width: 20%; margin: auto;">Dzēst</button>
+        </div>
+    </div>
+
+
+        <script src="../vendor/jquery/jquery-3.2.1.min.js"></script>
+        <script src="../vendor/animsition/js/animsition.min.js"></script>
+        <script src="../vendor/bootstrap/js/popper.js"></script>
+        <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+        <script src="../vendor/select2/select2.min.js"></script>
+        <script src="../vendor/daterangepicker/moment.min.js"></script>
+        <script src="../vendor/daterangepicker/daterangepicker.js"></script>
+        <script src="../vendor/countdowntime/countdowntime.js"></script>
+        <script src="../js/firebaseconfig.js"></script>
+        <script src="../js/main.js"></script>
+        <script src="../js/demontazasDetalas.js"></script>
+    </body>
+</html>

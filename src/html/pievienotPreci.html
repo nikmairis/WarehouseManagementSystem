@@ -1,0 +1,69 @@
+<html>
+    <head>
+        <title>Pievienot preci</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+        <link rel="stylesheet" type="text/css" href="../vendor/bootstrap/css/bootstrap.min.css">
+        <script src="https://www.gstatic.com/firebasejs/7.22.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.22.1/firebase-database.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.22.1/firebase-auth.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    </head>
+    <body>
+    <!----------------------------- MODAL ------------------------------->
+    <div class="modal fade" id="ErrorModal" tabindex="-1" role="dialog" aria-labelledby="ErrorModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Uzmanību</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div id="BodyText" class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!----------------------------- MODAL ------------------------------->
+
+        <div style="width: 400px; margin: auto; margin-top: 15px;">
+            <div class="form-group">
+                <label for="idTextfield">Preces ID</label>
+                <input type="text" name="identifikators" id="idTextfield" class="form-control">
+                <small class="form-text text-muted">Preces nosaukums latīņu burtiem (bez atstarpēm, mīkstinājumiem, simboliem u.t.t)</small>
+            </div>
+            <div class="form-group">
+                <label for="nosaukumsTextfield">Preces nosaukums</label>
+                <input type="text" name="nosaukums" id="nosaukumsTextfield" class="form-control">
+                <small class="form-text text-muted">Nosaukums kas tiks attēlots programmā</small>
+            </div>
+            <div class="form-group">
+                <label for="cenaTextfield">Preces cena</label>
+                <input type="number" name="cena" id="cenaTextfield" class="form-control">
+                <small class="form-text text-muted">Formāts - "1.23" vai "1"  (Ciparus atdalīt ar punktu vai izmantot veselus cipars)</small>
+            </div>
+            <div class="form-group">
+                <button id="izveidotPreciBtn" class="btn btn-primary" style="width: 100%">Izveidot!</button>
+            </div>
+        </div>
+
+
+        <script src="../vendor/jquery/jquery-3.2.1.min.js"></script>
+        <script src="../vendor/animsition/js/animsition.min.js"></script>
+        <script src="../vendor/bootstrap/js/popper.js"></script>
+        <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+        <script src="../vendor/select2/select2.min.js"></script>
+        <script src="../vendor/daterangepicker/moment.min.js"></script>
+        <script src="../vendor/daterangepicker/daterangepicker.js"></script>
+        <script src="../vendor/countdowntime/countdowntime.js"></script>
+        <script src="../js/firebaseconfig.js"></script>
+        <script src="../js/main.js"></script>
+        <script src="../js/izveidotPreci.js"></script>
+    </body>
+</html>

@@ -1,0 +1,140 @@
+<html>
+    <head>
+        <title>Printēt pavadzīmi</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+        <link rel="stylesheet" type="text/css" href="../vendor/bootstrap/css/bootstrap.min.css">
+        <script src="https://www.gstatic.com/firebasejs/7.22.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.22.1/firebase-database.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.22.1/firebase-auth.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+        <style>
+            #itemTable td{
+                border: 1px solid black;
+            }
+            #itemTable{
+                width: 100%;
+            }
+            #itemTable .hiddenEl{
+                border: none;
+            }
+            @media print
+            {
+                .no-print, .no-print *{
+                    display: none !important;
+                }
+                table{
+                    page-break-inside: avoid;
+                }
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <!---------------------- Start of Workspace---------------------->
+        <div class="pavadzimesWrapper" style="width: 600px; margin: auto;">
+            <br>
+                <div id="pavadzimesContainer">
+                    <!--- Will be autofilled!!! ----->
+                    <table style="width:100%; margin: auto;">
+                        <tr>
+                            <td><b>Nosūtītājs:</b></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="text-center" style="width:60%; border-bottom: 1px solid black; border-right: 1px solid black;">
+                                <div class="row">
+                                    <div class="col-md-12"><b>SIA NOSAUKUMS</b></div>
+                                    <div class="col-md-12"><b>Reģ. Ne. 44444444444</b></div>
+                                    <div class="col-md-12"><b>Testa iela 99-5, Rīga LV-1006</b></div>
+                                    <div class="col-md-12"><b>AS Swedbank, HABALV22</b></div>
+                                    <div class="col-md-12"><b>LV74HABA2222222222222</b></div>
+                                    <div class="col-md-12"><b>Testa iela 44</b></div>
+                                </div>
+                            </td>
+                            <td class="text-center" style="border-bottom: 1px solid black;">
+                                <div class="row">
+                                    <div class="col-md-12"><b id="pavadzimesNr"></b></div>
+                                    <div class="col-md-12"><b id="place"></b></div>
+                                    <div class="col-md-12"><b id="date"></b></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding-top: 10px;" colspan="2">
+                                <b>Saņēmējs:</b>
+                                <sanemejs style="border-bottom: 1px solid black; padding-left: 50px; padding-right: 50px;">
+                                    <b id="sanemejs">gfasfad  asdasd</b>
+                                </sanemejs>
+                            </td>
+                        </tr>
+                    </table>
+                    <br>
+                    <table id="itemTable">
+                        <thead>
+                            <tr class="text-center">
+                                <td>Preces, meteriāla, taras nosaukums</td>
+                                <td>Mērvienība</td>
+                                <td>Daudzums</td>
+                                <td>Cena</td>
+                                <td>Summa</td>
+                            </tr>
+                        </thead>
+                        <tbody id="dynamicEl">
+
+                        </tbody>
+                        <tbody>
+                        <!--
+                            <tr class="text-center">
+                                <td colspan="2" class="hiddenEl"></td>
+                                <td colspan="2">Summa bez nod.</td>
+                                <td id="summaBezNod"></td>
+                            </tr>
+                            <tr class="text-center">
+                                <td colspan="2" class="hiddenEl"></td>
+                                <td colspan="2">PVN 21%</td>
+                                <td id="pvn"></td>
+                            </tr>
+                            <tr class="text-center">
+                                <td colspan="2" class="hiddenEl"></td>
+                                <td colspan="2">PVN ___%</td>
+                                <td></td>
+                            </tr>
+                            --->
+                            <tr class="text-center">
+                                <td colspan="2" class="hiddenEl"></td>
+                                <td colspan="2">KOPĀ</td>
+                                <td id="total"></td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+                    <br>
+                    <table style="width:100%; margin: auto;">
+                        <tr>
+                            <td>Izsniedza: _____________________________</td>
+                            <td>Saņēma: _____________________________</td>
+                        </tr>
+                    </table>
+                    <br>
+                        <button id="print" class="btn btn-info no-print text-center mb-2" style="width: 100%">Printēt</button>
+                </div>
+        </div>
+        <!---------------------- End of Workspace ----------------------->
+
+        <script src="../vendor/jquery/jquery-3.2.1.min.js"></script>
+        <script src="../vendor/animsition/js/animsition.min.js"></script>
+        <script src="../vendor/bootstrap/js/popper.js"></script>
+        <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+        <script src="../vendor/select2/select2.min.js"></script>
+        <script src="../vendor/daterangepicker/moment.min.js"></script>
+        <script src="../vendor/daterangepicker/daterangepicker.js"></script>
+        <script src="../vendor/countdowntime/countdowntime.js"></script>
+        <script src="../js/firebaseconfig.js"></script>
+        <script src="../js/main.js"></script>
+        <script src="../js/printPavadzime.js"></script>
+    </body>
+</html>

@@ -1,0 +1,56 @@
+item{
+    background-color: #d0c0c0;
+    padding: 1px;
+    border-radius: 3px;
+}
+
+#dynamicDiv td{
+    border: 1px solid black;
+    padding: 5px;
+}
+
+.print-danger {
+    background-color: #dc4d5a;
+}
+
+.print-danger-fade{
+        background: rgb(220,77,90);
+        background: linear-gradient(90deg, rgba(220,77,90,1) 59%, rgba(255,0,0,0) 100%);
+    }
+
+.noDelivery, .noDelivery *{
+     -webkit-print-color-adjust: exact;
+     background-color: #fd8585;
+ }
+
+@media print
+{
+    item{
+        -webkit-print-color-adjust: exact;
+        background-color: #d0c0c0;
+        padding: 1px;
+        border-radius: 3px;
+    }
+    .no-print, .no-print *{
+        display: none !important;
+    }
+    table{
+        page-break-inside: avoid;
+    }
+
+    .print-danger{
+        -webkit-print-color-adjust: exact;
+        background-color: #dc4d5a;
+    }
+
+    .print-danger-fade{
+        -webkit-print-color-adjust: exact;
+        background: rgb(238,75,88);
+        background: linear-gradient(90deg, rgba(238,75,88,1) 80%, rgba(0,212,255,0) 100%);
+    }
+
+    .noDelivery, .noDelivery *{
+        -webkit-print-color-adjust: exact;
+        background-color: #fd8585;
+    }
+}

@@ -1,0 +1,107 @@
+<html>
+    <head>
+        <title>Atlikums VIP</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+        <link rel="stylesheet" type="text/css" href="../vendor/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../css/main.css">
+        <script src="https://www.gstatic.com/firebasejs/7.22.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.22.1/firebase-database.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.22.1/firebase-auth.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    </head>
+
+    <body>
+        <!---------------------- Start of Navbar ---------------------->
+        <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+            <!-- Brand -->
+            <a class="navbar-brand" href="landingPage.html">
+                <img src="../images/icons/logo.png" alt="Logo" style="width:100px;">
+            </a>
+            <!-- Links -->
+            <ul class="navbar-nav nav-padding">
+                <li class="nav-item">
+                    <a class="nav-link" href="sezonas.html">Admin Panel</a>
+                </li>
+                <li class="nav-item dropdown nav-padding">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                        Noliktavas Atlikums
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="atlikums.html">Standarta preces</a>
+                        <a class="dropdown-item" href="atlikumsVIP.html">VIP preces</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown nav-padding">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                        Preču pievienošana
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="pievienot.html">Standarta preces</a>
+                        <a class="dropdown-item" href="pievienotVIP.html">VIP preces</a>
+                        <a class="dropdown-item" href="pievienosanasVesture.html">Vēsture</a>
+                    </div>
+                </li>
+                <!-- Dropdown -->
+                <li class="nav-item dropdown nav-padding">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                        Ofisa pasūtījumi
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="jaunsPasutijums.html">Reģistrēt pasūtījumu</a>
+                        <a class="dropdown-item" href="jaunaDemontaza.html">Reģistrēt demontāžu</a>
+                        <a class="dropdown-item" href="kalendars.html">Kalendārais skats</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown nav-padding">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                        Tirdzn. vietas
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="izveidotTirdznVietu.html">Izveidot Tirdzn. vietu</a>
+                        <a class="dropdown-item" href="izveidotPavadzimi.html">Izveidot Pavadzīmi</a>
+                        <a class="dropdown-item" href="pavadzimes.html">Pavadzīmes</a>
+                        <a class="dropdown-item" href="parskati.html">Pārskati</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="marsrutuLapas.html">Maršrutu lapas</a>
+                </li>
+                <li class="nav-item">
+                    <a id="logOutBtn" class="nav-link" href="../index.html">LogOut</a>
+                </li>
+
+            </ul>
+        </nav>
+        <!---------------------- End of Navbar ---------------------->
+
+        <!---------------------- Start of Workspace---------------------->
+        <div id="atlikumsMenu" class="mt-4">
+            <div id="seasonMenu" class="row">
+                <div id="loadingBlock" class="col-lg-12 my-2">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <h5 id="loadingText" class="card-title">Loading...</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-------------- Auto-generates ---------------->
+        </div>
+        <!---------------------- End of Workspace ----------------------->
+
+        <script src="../vendor/jquery/jquery-3.2.1.min.js"></script>
+        <script src="../vendor/animsition/js/animsition.min.js"></script>
+        <script src="../vendor/bootstrap/js/popper.js"></script>
+        <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+        <script src="../vendor/select2/select2.min.js"></script>
+        <script src="../vendor/daterangepicker/moment.min.js"></script>
+        <script src="../vendor/daterangepicker/daterangepicker.js"></script>
+        <script src="../vendor/countdowntime/countdowntime.js"></script>
+        <script src="../js/firebaseconfig.js"></script>
+        <script src="../js/main.js"></script>
+        <script src="../js/logOut.js"></script>
+        <script src="../js/atlikumsVIP.js"></script>
+    </body>
+</html>
